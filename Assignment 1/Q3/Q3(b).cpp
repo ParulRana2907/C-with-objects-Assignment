@@ -1,20 +1,18 @@
-// check whether the string is a palindrome (ignoring spaces and case sensitivity)
+// replace all vowels in the string with a specific character (eg: *)
 #include <iostream>
+#include <string>
 using namespace std;
 
 int main() {
-    string str, rev = "";
-    cout << "Enter a string: ";
-    cin >> str;
-
-    for (int i = str.length() - 1; i >= 0; i--) {
-        rev += str[i];
+    string input;
+    cout << "Please enter a string: ";
+    getline(cin, input);
+    for (char &c : input) {
+        c = tolower(c);
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+            c = '*';
+        }
     }
-
-    if (str == rev)
-        cout << "The given string is Palindrome\n";
-    else
-        cout << "The given string is not a palindrome\n";
-
+    cout << "Modified string: " << input << endl;
     return 0;
 }
