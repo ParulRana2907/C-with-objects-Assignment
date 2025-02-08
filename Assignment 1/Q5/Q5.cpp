@@ -3,29 +3,46 @@
 using namespace std;
 
 int main() {
-    int n;
-    cout << "Enter the value  of n for matrix: ";
-    cin >> n;
+    int i,j,n;
+    cout<<"Enter n:";
+    cin>>n;
 
-    int matrix[n][n];
-    int rotatedMatrix[n][n];
-    int number = 1;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            matrix[i][j] = number++;
+    int m[n][n];int p[n][n];
+    cout<<"Enter values: "<<endl;
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++){
+        cin>>m[i][j];
+    }
+    }
+
+    cout<<"Actual matrix: "<<endl;
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++)
+        cout<<m[i][j]<<" ";
+        cout<<endl;
+    }
+
+   for(i=0;i<n;i++) {
+        for(j=i;j<n;j++) {
+            int temp= m[i][j];
+            m[i][j]=m[j][i];
+            m[j][i]=temp;
         }
     }
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            rotatedMatrix[j][n - 1 - i] = matrix[i][j];
+int k;
+    for(i=0;i<n;i++) {
+        for(j= 0,k=n-1;j<k;j++,k--) {
+            int temp= m[i][j];
+            m[i][j]=m[i][k];
+            m[i][k]=temp;
         }
     }
-    cout << "90 degrees:" << endl;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << rotatedMatrix[i][j] << " ";
-        }
-        cout << endl;
+
+    cout<<"Rotated matrix: "<<endl; 
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++)
+        cout<<m[i][j]<<" ";
+        cout<<endl;
     }
 
     return 0;
